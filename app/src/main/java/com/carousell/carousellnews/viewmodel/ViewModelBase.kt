@@ -17,7 +17,7 @@ abstract class ViewModelBase(application: Application): AndroidViewModel(applica
         error.postValue(ErrorCallback(true, NetworkUtils.exceptionHandler(throwable)))
     }
 
-    fun launchCoroutineScope(block: suspend CoroutineScope.() -> Unit) {
+    fun coroutineScope(block: suspend CoroutineScope.() -> Unit) {
         viewModelScope.launch(Dispatchers.IO + exceptionHandler, CoroutineStart.DEFAULT, block)
     }
 
