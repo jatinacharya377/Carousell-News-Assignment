@@ -14,6 +14,7 @@
             android:id="@+id/action_go_to_home_screen"
             app:destination="@id/fragment_home"
             app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
     </fragment>
@@ -23,5 +24,4 @@
         android:name="com.carousell.carousellnews.ui.fragments.FragmentHome"
         android:label="@string/fragment_home"
         tools:layout="@layout/fragment_home" />
-
 </navigation>

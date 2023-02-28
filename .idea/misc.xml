@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/CarousellNewsAssignment/app/src/main/res/drawable/ic_carousell_news_logo.xml" value="0.2388888888888889" />
         <entry key="..\:/AndroidStudioProjects/CarousellNewsAssignment/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProjects/CarousellNewsAssignment/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProjects/CarousellNewsAssignment/app/src/main/res/layout/fragment_home_screen.xml" value="0.25416666666666665" />
