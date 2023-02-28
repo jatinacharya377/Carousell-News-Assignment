@@ -3,7 +3,7 @@ package com.carousell.carousellnews.utils
 import android.util.Log
 import com.carousell.carousellnews.MyApplication
 import com.carousell.carousellnews.R
-import com.carousell.carousellnews.data.model.GenericResponse
+import com.google.gson.JsonParseException
 import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -25,20 +25,15 @@ object NetworkUtils {
         throwable.message?.let { Log.e("error_message", it) }
         return when (throwable) {
             is HttpException -> {
-                val response = throwable.response()?.errorBody()?.string()
                 when (throwable.response()?.code()) {
                     400 -> MyApplication.INSTANCE.getString(R.string.bad_request_error)
                     401 -> MyApplication.INSTANCE.getString(R.string.unauthorized_error)
                     404 -> MyApplication.INSTANCE.getString(R.string.request_not_found_error)
-                    500 -> {
-                        if (!response.isNullOrEmpty())
-                            GsonUtils.jsonToGson<GenericResponse>(response).message ?: MyApplication.INSTANCE.getString(R.string.something_went_wrong_error)
-                        else
-                            MyApplication.INSTANCE.getString(R.string.something_went_wrong_error)
-                    }
+                    500 -> MyApplication.INSTANCE.getString(R.string.internal_server_error)
                     else -> MyApplication.INSTANCE.getString(R.string.something_went_wrong_error)
                 }
             }
+            is JsonParseException -> MyApplication.INSTANCE.getString(R.string.bad_data_received_error)
             is ConnectException -> MyApplication.INSTANCE.getString(R.string.no_internet_error)
             is SocketTimeoutException -> MyApplication.INSTANCE.getString(R.string.slow_internet_error)
             is TimeoutException -> MyApplication.INSTANCE.getString(R.string.request_timeout_error)
