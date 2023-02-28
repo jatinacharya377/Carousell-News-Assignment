@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.carousell.carousellnews.MyApplication
 import com.carousell.carousellnews.R
-import com.carousell.carousellnews.data.error.ErrorCallback
+import com.carousell.carousellnews.data.model.ErrorCallback
 import com.carousell.carousellnews.data.model.Article
 import com.carousell.carousellnews.data.remote.repository.ArticlesRepository
 import kotlinx.coroutines.delay

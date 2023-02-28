@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.carousell.carousellnews.data.error.ErrorCallback
+import com.carousell.carousellnews.data.model.ErrorCallback
 import com.carousell.carousellnews.utils.NetworkUtils
 import kotlinx.coroutines.*
 
