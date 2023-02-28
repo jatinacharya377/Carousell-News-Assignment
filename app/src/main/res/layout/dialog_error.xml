@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/electric_indigo">
+        android:background="@color/black">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/av_error"
@@ -30,7 +30,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/av_error"
-            style="@style/TextLarge"
+            style="@style/TextTitle2"
             tools:text="404 Not Found!" />
 
         <com.google.android.material.button.MaterialButton
@@ -43,7 +43,7 @@
             android:fontFamily="@font/work_sans"
             android:text="@string/retry"
             android:textAllCaps="false"
-            android:textColor="@color/electric_indigo"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

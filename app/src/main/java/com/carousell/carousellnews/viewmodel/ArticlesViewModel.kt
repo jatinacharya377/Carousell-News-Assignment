@@ -26,13 +26,13 @@ class ArticlesViewModel(application: Application): ViewModelBase(application)  {
     fun getArticles() {
         coroutineScope {
             delay(1000)
-            error.postValue(ErrorCallback(false))
-            val articlesList = repo.getArticles()
+            error.postValue(ErrorCallback(true, MyApplication.INSTANCE.getString(R.string.something_went_wrong_error)))
+            /*val articlesList = repo.getArticles()
             if (articlesList.isNotEmpty()) {
                 _articlesListLiveData.postValue(getTheUpdatedArticlesList(articlesList))
             } else {
-                error.postValue(ErrorCallback(true, MyApplication.INSTANCE.getString(R.string.bad_data_received_error)))
-            }
+                error.postValue(ErrorCallback(true, MyApplication.INSTANCE.getString(R.string.list_is_empty_error)))
+            }*/
         }
     }
 

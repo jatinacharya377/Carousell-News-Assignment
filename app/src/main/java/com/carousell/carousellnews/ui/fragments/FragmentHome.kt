@@ -35,10 +35,12 @@ class FragmentHome: FragmentBase<FragmentHomeBinding>(FragmentHomeBinding::infla
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
+        dialog.setCancelable(false)
         dialogBinding.avError.setAnimation(anim)
         dialogBinding.tvErrorMessage.text = errorMessage
         dialogBinding.btnRetry.setOnClickListener {
             articlesVm.getArticles()
+            dialog.dismiss()
         }
     }
 
@@ -60,7 +62,7 @@ class FragmentHome: FragmentBase<FragmentHomeBinding>(FragmentHomeBinding::infla
                     getString(R.string.no_internet_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_no_internet)
                     getString(R.string.slow_internet_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_slow_internet)
                     getString(R.string.request_timeout_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_request_timeout)
-                    getString(R.string.list_is_empty_error) -> setErrorAnimation(getString(R.string.list_is_empty_error), R.raw.anim_data_not_found)
+                    getString(R.string.list_is_empty_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_data_not_found)
                     getString(R.string.something_went_wrong_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_something_went_wrong)
                 }
             }

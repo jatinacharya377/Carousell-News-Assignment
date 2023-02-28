@@ -29,9 +29,4 @@
         <item name="android:fontFamily">@font/work_sans_medium</item>
         <item name="android:textSize">@dimen/font_16</item>
     </style>
-
-    <style name="TextLarge">
-        <item name="android:fontFamily">@font/work_sans_medium</item>
-        <item name="android:textSize">@dimen/font_18</item>
-    </style>
 </resources>
