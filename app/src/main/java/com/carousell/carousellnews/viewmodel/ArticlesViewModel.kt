@@ -31,7 +31,7 @@ class ArticlesViewModel(application: Application): ViewModelBase(application)  {
             if (articlesList.isNotEmpty()) {
                 _articlesListLiveData.postValue(getTheUpdatedArticlesList(articlesList))
             } else {
-                error.postValue(ErrorCallback(true, MyApplication.INSTANCE.getString(R.string.list_is_empty_error)))
+                error.postValue(ErrorCallback(true, MyApplication.INSTANCE.getString(R.string.list_is_empty_error), R.raw.anim_data_not_found))
             }
         }
     }

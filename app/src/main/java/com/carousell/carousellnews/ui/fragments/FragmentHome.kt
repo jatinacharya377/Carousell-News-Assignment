@@ -53,18 +53,7 @@ class FragmentHome: FragmentBase<FragmentHomeBinding>(FragmentHomeBinding::infla
         }
         articlesVm.error.observe(viewLifecycleOwner) { error ->
             if (error.error) {
-                when (error.errorMessage) {
-                    getString(R.string.bad_request_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_400)
-                    getString(R.string.unauthorized_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_401)
-                    getString(R.string.request_not_found_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_404)
-                    getString(R.string.internal_server_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_500)
-                    getString(R.string.bad_data_received_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_bad_data)
-                    getString(R.string.no_internet_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_no_internet)
-                    getString(R.string.slow_internet_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_slow_internet)
-                    getString(R.string.request_timeout_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_request_timeout)
-                    getString(R.string.list_is_empty_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_data_not_found)
-                    getString(R.string.something_went_wrong_error) -> setErrorAnimation(error.errorMessage, R.raw.anim_something_went_wrong)
-                }
+                error.errorMessage?.let { message -> error.anim?.let { anim -> setErrorAnimation(message, anim) } }
             }
         }
     }

@@ -14,7 +14,7 @@ abstract class ViewModelBase(application: Application): AndroidViewModel(applica
     }
     val error = MutableLiveData<ErrorCallback>()
     private val exceptionHandler = CoroutineExceptionHandler {_, throwable ->
-        error.postValue(ErrorCallback(true, NetworkUtils.exceptionHandler(throwable)))
+        error.postValue(ErrorCallback(true, NetworkUtils.exceptionHandler(throwable), NetworkUtils.getTheAnimJson(throwable)))
     }
 
     fun coroutineScope(block: suspend CoroutineScope.() -> Unit) {
