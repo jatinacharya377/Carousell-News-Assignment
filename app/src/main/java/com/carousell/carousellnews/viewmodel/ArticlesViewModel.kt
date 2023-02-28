@@ -25,29 +25,27 @@ class ArticlesViewModel(application: Application): ViewModelBase(application)  {
 
     fun getArticles() {
         coroutineScope {
-
+            delay(1000)
             error.postValue(ErrorCallback(false))
             val articlesList = repo.getArticles()
             if (articlesList.isNotEmpty()) {
-                _articlesListLiveData.postValue(getTheModifiedArticlesList(articlesList))
+                _articlesListLiveData.postValue(getTheUpdatedArticlesList(articlesList))
             } else {
                 error.postValue(ErrorCallback(true, MyApplication.INSTANCE.getString(R.string.bad_data_received_error)))
             }
         }
     }
 
-    fun sortTheArticles(isTime: Boolean) {
-        var articlesList = _articlesListLiveData.value
-        if (isTime) {
-            articlesList = articlesList?.sortedBy { it.time_created }
+    fun sortTheArticles(isRecent: Boolean) {
+        val existingList = _articlesListLiveData.value
+        if (isRecent) {
+            _articlesListLiveData.postValue(existingList?.sortedBy { it.time_created })
         } else {
-            articlesList = articlesList?.sortedBy { it.rank }
-
+            _articlesListLiveData.postValue(existingList?.sortedWith(compareBy({it.rank}, {it.time_created})))
         }
-        articlesList?.let { _articlesListLiveData.postValue(it) }
     }
 
-    private fun getTheModifiedArticlesList(articlesList: List<Article>): List<Article> {
+    private fun getTheUpdatedArticlesList(articlesList: List<Article>): List<Article> {
         articlesList.forEach {
             it.published_time = it.time_created?.let { timeCreated -> getThePublishedTime(timeCreated) }
         }

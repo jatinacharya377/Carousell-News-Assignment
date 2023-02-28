@@ -6,6 +6,7 @@ import com.carousell.carousellnews.R
 import com.carousell.carousellnews.databinding.DialogErrorBinding
 import com.carousell.carousellnews.databinding.FragmentHomeBinding
 import com.carousell.carousellnews.ui.adapters.ArticlesAdapter
+import com.carousell.carousellnews.utils.toastS
 import com.carousell.carousellnews.viewmodel.ArticlesViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -83,14 +84,22 @@ class FragmentHome: FragmentBase<FragmentHomeBinding>(FragmentHomeBinding::infla
             }
         }
         binding.cvPopular.setOnClickListener {
-            articlesVm.sortTheArticles(false)
-            binding.layoutMotion.transitionToStart()
-            isOpen = false
+            if (adapter.list.isEmpty()) {
+                context?.toastS(getString(R.string.articles_loading))
+            } else {
+                articlesVm.sortTheArticles(false)
+                binding.layoutMotion.transitionToStart()
+                isOpen = false
+            }
         }
         binding.cvRecent.setOnClickListener {
-            articlesVm.sortTheArticles(true)
-            binding.layoutMotion.transitionToStart()
-            isOpen = false
+            if (adapter.list.isEmpty()) {
+                context?.toastS(getString(R.string.articles_loading))
+            } else {
+                articlesVm.sortTheArticles(true)
+                binding.layoutMotion.transitionToStart()
+                isOpen = false
+            }
         }
         binding.rvArticlesList.adapter = adapter
         setUpObserver()

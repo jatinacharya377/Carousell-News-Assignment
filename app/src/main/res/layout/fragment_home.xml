@@ -50,6 +50,9 @@
             android:id="@+id/cv_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/offset_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_more"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="@dimen/offset_6">
 
@@ -104,45 +107,50 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
         </com.google.android.material.card.MaterialCardView>
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/layout_shimmer"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_constraint"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-            <LinearLayout
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/layout_shimmer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-                <include layout="@layout/layout_shimmer_placeholder" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <include layout="@layout/layout_shimmer_placeholder" />
+                    <include layout="@layout/layout_shimmer_placeholder" />
 
-                <include layout="@layout/layout_shimmer_placeholder" />
+                    <include layout="@layout/layout_shimmer_placeholder" />
 
-                <include layout="@layout/layout_shimmer_placeholder" />
+                    <include layout="@layout/layout_shimmer_placeholder" />
 
-                <include layout="@layout/layout_shimmer_placeholder" />
+                    <include layout="@layout/layout_shimmer_placeholder" />
 
-                <include layout="@layout/layout_shimmer_placeholder" />
+                    <include layout="@layout/layout_shimmer_placeholder" />
 
-                <include layout="@layout/layout_shimmer_placeholder" />
-            </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
+                    <include layout="@layout/layout_shimmer_placeholder" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_articles_list"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/offset_10"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/layout_article_item" />
+                    <include layout="@layout/layout_shimmer_placeholder" />
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_articles_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/offset_10"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/layout_article_item" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

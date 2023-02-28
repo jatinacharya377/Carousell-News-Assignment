@@ -28,7 +28,6 @@
                 android:id="@+id/iv_article_banner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY"
                 app:loadImage="@{article.banner_url}"
                 tools:src="@drawable/ic_carousell_news_logo" />
 
