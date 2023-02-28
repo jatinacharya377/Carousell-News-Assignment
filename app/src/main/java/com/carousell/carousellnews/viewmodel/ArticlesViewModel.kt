@@ -10,7 +10,6 @@ import com.carousell.carousellnews.data.model.Article
 import com.carousell.carousellnews.data.remote.repository.ArticlesRepository
 import kotlinx.coroutines.delay
 import org.joda.time.Period
-import org.joda.time.PeriodType
 import org.joda.time.format.PeriodFormatterBuilder
 
 class ArticlesViewModel(application: Application): ViewModelBase(application)  {
@@ -26,7 +25,7 @@ class ArticlesViewModel(application: Application): ViewModelBase(application)  {
 
     fun getArticles() {
         coroutineScope {
-            delay(1000)
+
             error.postValue(ErrorCallback(false))
             val articlesList = repo.getArticles()
             if (articlesList.isNotEmpty()) {
@@ -35,6 +34,17 @@ class ArticlesViewModel(application: Application): ViewModelBase(application)  {
                 error.postValue(ErrorCallback(true, MyApplication.INSTANCE.getString(R.string.bad_data_received_error)))
             }
         }
+    }
+
+    fun sortTheArticles(isTime: Boolean) {
+        var articlesList = _articlesListLiveData.value
+        if (isTime) {
+            articlesList = articlesList?.sortedBy { it.time_created }
+        } else {
+            articlesList = articlesList?.sortedBy { it.rank }
+
+        }
+        articlesList?.let { _articlesListLiveData.postValue(it) }
     }
 
     private fun getTheModifiedArticlesList(articlesList: List<Article>): List<Article> {

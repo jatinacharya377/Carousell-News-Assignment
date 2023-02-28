@@ -1,8 +1,6 @@
 package com.carousell.carousellnews.ui.fragments
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.viewModels
 import com.carousell.carousellnews.R
 import com.carousell.carousellnews.databinding.DialogErrorBinding
@@ -27,8 +25,6 @@ class FragmentHome: FragmentBase<FragmentHomeBinding>(FragmentHomeBinding::infla
      * @author: Jagannath Acharya
      */
     private fun setErrorAnimation(errorMessage: String, anim: Int) {
-        binding.layoutShimmer.startShimmer()
-        binding.layoutShimmer.visibility = View.VISIBLE
         binding.rvArticlesList.visibility = View.GONE
         val dialogBinding = DialogErrorBinding.inflate(LayoutInflater.from(requireContext()))
         val dialog = MaterialAlertDialogBuilder(requireContext())
@@ -49,6 +45,7 @@ class FragmentHome: FragmentBase<FragmentHomeBinding>(FragmentHomeBinding::infla
         articlesVm.articlesListLiveData.observe(viewLifecycleOwner) {
             binding.layoutShimmer.stopShimmer()
             binding.layoutShimmer.visibility = View.GONE
+            binding.rvArticlesList.visibility = View.VISIBLE
             adapter.setItems(it)
         }
         articlesVm.error.observe(viewLifecycleOwner) { error ->
@@ -70,31 +67,31 @@ class FragmentHome: FragmentBase<FragmentHomeBinding>(FragmentHomeBinding::infla
     }
 
     /**
-     * This function is responsible for creating the views once they are properly initialized.
-     */
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_home_screen, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                when (menuItem.itemId) {
-                    R.id.item_popular -> Toast.makeText(context, "hi", Toast.LENGTH_SHORT).show()
-                    R.id.item_recent -> {}
-                }
-                return true
-            }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-    }*/
-
-    /**
      * This function is responsible for setting up our UI.
      * It is an abstract function which is implemented by extending from FragmentBase.
      * @author: Jagannath Acharya
      */
     override fun setUpUi() {
+        var isOpen = false
+        binding.cvMore.setOnClickListener {
+            isOpen = if (isOpen) {
+                binding.layoutMotion.transitionToStart()
+                false
+            } else {
+                binding.layoutMotion.transitionToEnd()
+                true
+            }
+        }
+        binding.cvPopular.setOnClickListener {
+            articlesVm.sortTheArticles(false)
+            binding.layoutMotion.transitionToStart()
+            isOpen = false
+        }
+        binding.cvRecent.setOnClickListener {
+            articlesVm.sortTheArticles(true)
+            binding.layoutMotion.transitionToStart()
+            isOpen = false
+        }
         binding.rvArticlesList.adapter = adapter
         setUpObserver()
     }

@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/layout_motion"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_200">
+        android:background="@color/gray_200"
+        app:layoutDescription="@xml/fragment_home_screen_menu_scene">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -22,6 +24,85 @@
                 android:textColor="@color/white"
                 style="@style/TextTitle" />
         </androidx.appcompat.widget.Toolbar>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/offset_16"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/toolbar"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="@dimen/size_30"
+            app:cardElevation="@dimen/size_0"
+            app:contentPadding="@dimen/offset_4">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_more" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/offset_6">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_recent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardElevation="@dimen/size_0">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/offset_50"
+                        android:layout_marginVertical="@dimen/offset_16"
+                        android:text="@string/item_recent"
+                        android:textColor="@color/black"
+                        style="@style/TextNormal" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:layout_width="@dimen/size_120"
+                    android:layout_height="@dimen/size_1"
+                    android:layout_gravity="center"
+                    android:background="@color/spanish_gray" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_popular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardElevation="@dimen/size_0">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/offset_50"
+                        android:layout_marginVertical="@dimen/offset_16"
+                        android:text="@string/item_popular"
+                        android:textColor="@color/black"
+                        style="@style/TextNormal" />
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/layout_shimmer"
@@ -62,5 +143,6 @@
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/layout_article_item" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>
