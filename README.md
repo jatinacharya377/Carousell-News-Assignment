@@ -1,1 +1,0 @@
-Carousell News Assignment App
