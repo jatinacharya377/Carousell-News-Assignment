@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextExtraSmall">
+        <item name="android:fontFamily">@font/work_sans</item>
+        <item name="android:textSize">@dimen/font_10</item>
+    </style>
+
+    <style name="TextSmall">
+        <item name="android:fontFamily">@font/work_sans</item>
+        <item name="android:textSize">@dimen/font_12</item>
+    </style>
+
+    <style name="TextNormal">
+        <item name="android:fontFamily">@font/work_sans</item>
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
+
+    <style name="TextTitle">
+        <item name="android:fontFamily">@font/work_sans</item>
+        <item name="android:textSize">@dimen/font_16</item>
+    </style>
+
+    <style name="TextTitle1">
+        <item name="android:fontFamily">@font/work_sans_bold</item>
+        <item name="android:textSize">@dimen/font_16</item>
+    </style>
+
+    <style name="TextTitle2">
+        <item name="android:fontFamily">@font/work_sans_medium</item>
+        <item name="android:textSize">@dimen/font_16</item>
+    </style>
+</resources>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/layout_motion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_200"
+        app:layoutDescription="@xml/fragment_home_screen_menu_scene">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red_500"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/carousell_news"
+                android:textColor="@color/white"
+                style="@style/TextTitle" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/offset_16"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/toolbar"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="@dimen/size_30"
+            app:cardElevation="@dimen/size_0"
+            app:contentPadding="@dimen/offset_4">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_more" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/offset_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_more"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/offset_6">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_recent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardElevation="@dimen/size_0">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/offset_50"
+                        android:layout_marginVertical="@dimen/offset_16"
+                        android:text="@string/item_recent"
+                        android:textColor="@color/black"
+                        style="@style/TextNormal" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:layout_width="@dimen/size_120"
+                    android:layout_height="@dimen/size_1"
+                    android:layout_gravity="center"
+                    android:background="@color/spanish_gray" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_popular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardElevation="@dimen/size_0">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/offset_50"
+                        android:layout_marginVertical="@dimen/offset_16"
+                        android:text="@string/item_popular"
+                        android:textColor="@color/black"
+                        style="@style/TextNormal" />
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_constraint"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/layout_shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/layout_shimmer_placeholder" />
+
+                    <include layout="@layout/layout_shimmer_placeholder" />
+
+                    <include layout="@layout/layout_shimmer_placeholder" />
+
+                    <include layout="@layout/layout_shimmer_placeholder" />
+
+                    <include layout="@layout/layout_shimmer_placeholder" />
+
+                    <include layout="@layout/layout_shimmer_placeholder" />
+
+                    <include layout="@layout/layout_shimmer_placeholder" />
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_articles_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/offset_10"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/layout_article_item" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>

@@ -1,4 +1,4 @@
-package com.carousell.carousellnews
+package com.carousell.carousellnews.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

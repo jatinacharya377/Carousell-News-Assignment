@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Carousell News Assignment</string>
+    <string name="fragment_splash">Fragment Splash</string>
+    <string name="fragment_home">Fragment Home</string>
+    <string name="bad_request_error">Bad Request.</string>
+    <string name="unauthorized_error">You Are Unauthorized to Access This.</string>
+    <string name="request_not_found_error">Request Not Found.</string>
+    <string name="internal_server_error">Internal Server Error.</string>
+    <string name="something_went_wrong_error">Something Went Wrong!</string>
+    <string name="bad_data_received_error">Bad Data Received from Server.</string>
+    <string name="no_internet_error">Failed to Connect. Please, check your internet connection.</string>
+    <string name="slow_internet_error">Slow Internet Connection. Please, check your connection.</string>
+    <string name="request_timeout_error">Your Request Took Too much Time to Respond. Please, try again!</string>
+    <string name="list_is_empty_error">Data not found! List is empty.</string>
+    <string name="carousell_news">Carousell News</string>
+    <string name="item_recent">Recent</string>
+    <string name="item_popular">Popular</string>
+    <string name="retry">Retry</string>
+    <string name="articles_loading">Please, wait for the articles to load. Results can\'t be shown at the moment.</string>
 </resources>
