@@ -16,4 +16,5 @@
     <string name="item_recent">Recent</string>
     <string name="item_popular">Popular</string>
     <string name="retry">Retry</string>
+    <string name="articles_loading">Please, wait for the articles to load. Results can\'t be shown at the moment.</string>
 </resources>
